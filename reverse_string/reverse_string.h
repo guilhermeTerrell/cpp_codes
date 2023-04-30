@@ -5,9 +5,6 @@
 
 namespace reverse_string {
 
-        /*Function prototype to get string size*/
-        int size_str(const std::string str);
-
         /*Function prototype to reverse string*/
         std::string reverse_string(const std::string str);
 
