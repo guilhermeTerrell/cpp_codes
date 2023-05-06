@@ -1,36 +1,31 @@
 #include <iostream>
 #include "queen_attack.h"
 
-namespace queen_attack {
+/*Member functions definitions from class Chess_Board*/
+
+using namespace queen_attack;
+
+std::pair<int, int> chess_board::board(int x, int y){
+	if((x >= 0) && (y >= 0)) return std::make_pair(x, y);	
+}
+
+bool chess_board::can_attack(std::pair<int, int> white_queen, std::pair<int, int> black_queen){
+	//same row and column is invalid (position must be different)
+	if((white_queen.first == black_queen.first) && (white_queen.second == black_queen.second)) return false;
 	
-	void init_empty_chess_board(char matrix[][8]){
-		
-		/*loop to create an 2-D array of '0' like {'0', '0', '0', ..., '0'}*/
-		/*outside for loop iterate over rows*/
-		for(int i = 0; i <= 7; i++){
-			/*inside for loop iterate over cols*/
-			for(int j = 0; j <= 7; j++){
-				matrix[i][j] = '0';
-			}
-		}
-		//std::cout << empty_board << std::endl;
-	}
+	//same row
+	else if((white_queen.first == black_queen.first) && (white_queen.second != black_queen.second)) return true;
 	
-	void show_chess_board(char matrix[][8]){
-		
-		std::cout << "  a b c d e f g h" << std::endl;
-		/*outside for loop iterate over rows*/
-		for(int i = 0; i <= 7; i++){
-			std::cout << "  - - - - - - - -" << std::endl;
-			/*inside for loop iterate over cols*/
-			for(int j = 0; j <= 7; j++){
-				if(j == 0) std::cout << i << " ";
-				std::cout << matrix[i][j] << " ";
-				if(j == 7) std::cout << i << std::endl;
-			}
-		}
-		std::cout << "  - - - - - - - -" << std::endl;
-		std::cout << "  a b c d e f g h" << std::endl;
-	}
+	//same column
+	else if((white_queen.first != black_queen.first) && (white_queen.second == black_queen.second)) return true;
 	
-}  // namespace queen_attack
+	//same diagonal
+}
+
+std::pair<int, int> chess_board::white(){
+	return this -> _white;
+}
+
+std::pair<int, int> chess_board::black(){
+	return this -> _black;
+}
