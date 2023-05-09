@@ -7,6 +7,7 @@ namespace queen_attack {
 		std::pair<int, int> const _white; //white queen
 		std::pair<int, int> const _black; //black queen
 	public:
+		chess_board(); //std constructor
 		chess_board(const std::pair<int, int>, const std::pair<int, int>); //constructor to initialize chess_board class variable members
 		std::pair<int, int> white(void) const; //return white queen position
 		std::pair<int, int> black(void) const; //return black queen position
