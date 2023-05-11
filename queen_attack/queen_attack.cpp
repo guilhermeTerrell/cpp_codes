@@ -47,20 +47,27 @@ std::pair<int, int> chess_board::black() const{
 	return this -> _black;
 }
 
+void chess_board::init_empty_chess_board() {
+	for(int row = 0; row <= 7; row++){
+		for(int column = 0; column <= 7; column++){
+			this -> chess_board_matrix[row][column] = '#';
+		}
+	}
+}
+
 void chess_board::show_chess_board() {
-	
+
 	for(int row = 0; row <=7; row++){
 		if (row == 0)std::cout << "  " << "a b c d e f g h" << std::endl;
 		for(int column = 0; column <= 7; column++){
+			
 			if (column == 0) {
-				std::cout << row << " " << "# ";
-				//std::cout << "# ";
+				std::cout << row << " " << this -> chess_board_matrix[row][column] << " ";
 			}
 			else if (column == 7) {
-				std::cout << "# " << row << std::endl;
-				//std::cout << std::endl;
+				std::cout << this -> chess_board_matrix[row][column] << " " << row << std::endl;
 			}
-			else std::cout << "# ";
+			else std::cout << this -> chess_board_matrix[row][column] << " ";
 		}
 	}
 	std::cout << "  " << "a b c d e f g h" << std::endl;

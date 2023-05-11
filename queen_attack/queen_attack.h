@@ -6,6 +6,7 @@ namespace queen_attack {
 	private:
 		std::pair<int, int> const _white; //white queen
 		std::pair<int, int> const _black; //black queen
+		char chess_board_matrix[8][8]; //matrix that represents the chess board
 	public:
 		chess_board(); //std constructor
 		chess_board(const std::pair<int, int>, const std::pair<int, int>); //constructor to initialize chess_board class variable members
@@ -13,6 +14,7 @@ namespace queen_attack {
 		std::pair<int, int> black(void) const; //return black queen position
 		std::pair<int, int> board(int, int); //move queens in the board for a given coordinate
 		bool can_attack() const; //check positions of each queen to see attack condition
+		void init_empty_chess_board(void); //initialize an empty chess board (without queens)
 		void show_chess_board(void); //print chess board with queen positions
 	};	
 }  // namespace queen_attack

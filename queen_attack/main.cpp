@@ -8,6 +8,7 @@ int main (int argc, char ** argv){
 	
 	queen_attack::chess_board board{white, black};
 	
+	board.init_empty_chess_board();
 	board.show_chess_board();
 	
 	return 0;
