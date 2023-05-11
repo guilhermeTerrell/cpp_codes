@@ -1,12 +1,13 @@
 #include <utility>
 #include <stdexcept>
+#include <iostream>
 #include "queen_attack.h"
 
 /*Member functions definitions from class chess_board*/
 
 using namespace queen_attack;
 
-chess_board::chess_board() : _white (std::make_pair(7, 3)), _black(std::make_pair(5, 2)) {};
+chess_board::chess_board() : _white (std::make_pair(7, 3)), _black(std::make_pair(5, 2)) {}; //default costructor
 
 chess_board::chess_board(const std::pair<int, int> white, const std::pair<int, int> black)
 			: _white(white), _black(black) {
@@ -44,4 +45,23 @@ std::pair<int, int> chess_board::white() const{
 
 std::pair<int, int> chess_board::black() const{
 	return this -> _black;
+}
+
+void chess_board::show_chess_board() {
+	
+	for(int row = 0; row <=7; row++){
+		if (row == 0)std::cout << "  " << "a b c d e f g h" << std::endl;
+		for(int column = 0; column <= 7; column++){
+			if (column == 0) {
+				std::cout << row << " " << "# ";
+				//std::cout << "# ";
+			}
+			else if (column == 7) {
+				std::cout << "# " << row << std::endl;
+				//std::cout << std::endl;
+			}
+			else std::cout << "# ";
+		}
+	}
+	std::cout << "  " << "a b c d e f g h" << std::endl;
 }

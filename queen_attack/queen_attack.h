@@ -13,6 +13,7 @@ namespace queen_attack {
 		std::pair<int, int> black(void) const; //return black queen position
 		std::pair<int, int> board(int, int); //move queens in the board for a given coordinate
 		bool can_attack() const; //check positions of each queen to see attack condition
+		void show_chess_board(void); //print chess board with queen positions
 	};	
 }  // namespace queen_attack
 
