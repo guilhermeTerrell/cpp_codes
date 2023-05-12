@@ -50,9 +50,29 @@ std::pair<int, int> chess_board::black() const{
 void chess_board::init_empty_chess_board() {
 	for(int row = 0; row <= 7; row++){
 		for(int column = 0; column <= 7; column++){
-			this -> chess_board_matrix[row][column] = '#';
+			this -> chess_board_matrix[row][column] = '-';
 		}
 	}
+}
+
+void chess_board::make_a_move(char queen_first_letter, int row, int column) {
+	std::pair<int, int> previous_position; //store previous positons of queens 
+	if ((row <= 7) && (column <= 7)){
+		if (queen_first_letter == 'w') {
+			previous_position = this -> _white;
+			this -> _white = std::make_pair(row, column); //update white queen position
+			this -> chess_board_matrix[row][column] = 'w'; //put her on the chess board
+			this -> chess_board_matrix[previous_position.first][previous_position.second] = '-'; //restore previous position
+		}
+		else if (queen_first_letter == 'b') {
+			previous_position = this -> _black;
+			this -> _black = std::make_pair(row, column); //update black queen position
+			this -> chess_board_matrix[row][column] = 'b'; //put her on the board
+			this -> chess_board_matrix[previous_position.first][previous_position.second] = '-'; //restore previous position
+		}
+		else std::domain_error("No valid queen.");
+	}
+	else throw std::domain_error("Out of bound. Choose a valid position to make your move");
 }
 
 void chess_board::show_chess_board() {

@@ -4,8 +4,8 @@
 namespace queen_attack {
 	class chess_board {	
 	private:
-		std::pair<int, int> const _white; //white queen
-		std::pair<int, int> const _black; //black queen
+		std::pair<int, int> _white; //white queen
+		std::pair<int, int> _black; //black queen
 		char chess_board_matrix[8][8]; //matrix that represents the chess board
 	public:
 		chess_board(); //std constructor
@@ -16,6 +16,7 @@ namespace queen_attack {
 		bool can_attack() const; //check positions of each queen to see attack condition
 		void init_empty_chess_board(void); //initialize an empty chess board (without queens)
 		void show_chess_board(void); //print chess board with queen positions
+		void make_a_move(char, int, int); //make a valid move with your queen
 	};	
 }  // namespace queen_attack
 
