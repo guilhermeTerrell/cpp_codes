@@ -17,7 +17,7 @@ void SnakeGame::drawScreen(void){
 			else{
 				if((column == 0) || (column == SnakeGame::width - 1)) std::cout << "#";
 				else if ((column == this -> fruit_coord.first) && (row == this -> fruit_coord.second)) std::cout << "@";
-				else if ((column == this -> snake_head.first) && (row == this -> snake_head.second)) std::cout << ">";
+				else if ((column == this -> snake_head.first) && (row == this -> snake_head.second)) std::cout << this -> snake_head_char;
 				else std::cout << " ";
 			}
 		}
@@ -76,6 +76,7 @@ bool SnakeGame::gameOver(void){
 void SnakeGame::move_snake(void){
 	std::cout << "Move the snake" << std::endl;
 	std::cin >> this -> snake_direction_moviment;
+	SnakeGame::define_snake_head_char();
 	
 	/*increase y coordinate = go up*/
 	if(this -> snake_direction_moviment == 'w'){
@@ -96,4 +97,22 @@ void SnakeGame::move_snake(void){
 	if(this -> snake_direction_moviment == 'a'){
 		this -> snake_head.first--;
 	}
+}
+
+/*
+	Function: 	define_snake_head_char
+	Objective:	Define the charactere that represents the snake head depending on the direction movement
+				w: up 		^
+				s: down		v
+				d: right	>
+				a: left		<
+				
+	Arguments:	none
+	Returns:	none
+*/
+void SnakeGame::define_snake_head_char(void){
+	if (this -> snake_direction_moviment == 'w') this -> snake_head_char = '^';
+	if (this -> snake_direction_moviment == 's') this -> snake_head_char = 'v';
+	if (this -> snake_direction_moviment == 'd') this -> snake_head_char = '>';
+	if (this -> snake_direction_moviment == 'a') this -> snake_head_char = '<';
 }
