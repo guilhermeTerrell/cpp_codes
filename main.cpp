@@ -2,13 +2,13 @@
 #include "snake.h"
 
 int main(int argc, char ** argv){
-	int time = 0;
+
 	SnakeGame snakeGame;
 	
-	while(time < 10){
+	while(snakeGame.gameOver() == 0){
 		snakeGame.placeFruit();
-		snakeGame.getFruitPosition();
 		snakeGame.drawScreen();
-		time++;
+		snakeGame.move_snake();
+		system("clear");
 	}
 }

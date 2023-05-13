@@ -1,5 +1,6 @@
 #include <iostream>
 #include "snake.h"
+//#include <conio.h>
 
 /*
 	Function: 	screen
@@ -16,6 +17,7 @@ void SnakeGame::drawScreen(void){
 			else{
 				if((column == 0) || (column == SnakeGame::width - 1)) std::cout << "#";
 				else if ((column == this -> fruit_coord.first) && (row == this -> fruit_coord.second)) std::cout << "@";
+				else if ((column == this -> snake_head.first) && (row == this -> snake_head.second)) std::cout << ">";
 				else std::cout << " ";
 			}
 		}
@@ -30,8 +32,8 @@ void SnakeGame::drawScreen(void){
 	Returns:	none
 */
 void SnakeGame::placeFruit(void){
-	this -> fruit_coord.first = 1 + (rand() % (SnakeGame::width - 2)); //randomly generates x coordinate (1~39)
-	this -> fruit_coord.second = 1 + (rand() % (SnakeGame::height - 2)); //randomly generates y coordinate (1~19)
+	this -> fruit_coord.first = 1 + (rand() % (SnakeGame::width - 2)); //randomly generates x coordinate (1~38)
+	this -> fruit_coord.second = 1 + (rand() % (SnakeGame::height - 2)); //randomly generates y coordinate (1~18)
 }
 
 /*
@@ -43,4 +45,54 @@ void SnakeGame::placeFruit(void){
 void SnakeGame::getFruitPosition(void){
 	std::cout << "x: " << this -> fruit_coord.first << std::endl;
 	std::cout << "y: " << this -> fruit_coord.second << std::endl;
+}
+
+/*
+	Function: 	gameOver
+	Objective:	Evaluates if snake head hits the wall. If so, game over flag is updated to 1. 
+	Arguments:	none
+	Returns:	none
+*/
+bool SnakeGame::gameOver(void){
+	if((this -> snake_head.first == 0) || (this -> snake_head.first == 39) || (this -> snake_head.second == 0) 
+			||(this -> snake_head.second == 19)){
+		this -> game_over = 1;
+	}
+	else this -> game_over = 0;
+	return this -> game_over;
+}
+
+/*
+	Function: 	move_snake
+	Objective:	Move snake to the screen with the following commands:
+				w: up
+				s: down
+				d: right
+				a: left
+				
+	Arguments:	none
+	Returns:	none
+*/
+void SnakeGame::move_snake(void){
+	std::cin >> this -> snake_direction_moviment;
+	
+	/*increase y coordinate = go up*/
+	if(this -> snake_direction_moviment == 'w'){
+		this -> snake_head.second--;
+	}
+	
+	/*decrease y coordinate = go down*/
+	if(this -> snake_direction_moviment == 's'){
+		this -> snake_head.second++;
+	}
+	
+	/*increase x coordinate = go right*/
+	if(this -> snake_direction_moviment == 'd'){
+		this -> snake_head.first++;
+	}
+	
+	/*decrease x coordinate = go left*/
+	if(this -> snake_direction_moviment == 'a'){
+		this -> snake_head.first--;
+	}
 }
