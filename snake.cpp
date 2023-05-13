@@ -74,6 +74,7 @@ bool SnakeGame::gameOver(void){
 	Returns:	none
 */
 void SnakeGame::move_snake(void){
+	std::cout << "Move the snake" << std::endl;
 	std::cin >> this -> snake_direction_moviment;
 	
 	/*increase y coordinate = go up*/
