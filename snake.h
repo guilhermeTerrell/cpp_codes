@@ -14,7 +14,7 @@ private:
 	std::pair<int, int> snake_head;
 public:
 	SnakeGame() : 
-		snake_head(20, 10), game_over(0), snake_direction_moviment(' '), snake_head_char('>'), snake_tail(" "), fruit_eated(1) {}; //default constructor to initialize data members in private area
+		snake_head(20, 10), game_over(0), snake_direction_moviment(' '), snake_head_char('>'), snake_tail(""), fruit_eated(1) {}; //default constructor to initialize data members in private area
 	void drawScreen(void);
 	void placeFruit(void);
 	void getFruitPosition(void);

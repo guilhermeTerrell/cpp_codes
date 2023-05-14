@@ -126,6 +126,7 @@ void SnakeGame::define_snake_head_char(void){
 	Returns:	none
 */
 bool SnakeGame::eat_fruit(void){
-	if (this -> snake_head == this -> fruit_coord) this -> fruit_eated = 1;
+	if (this -> snake_head == this -> fruit_coord) this -> fruit_eated = 1; //update eat flag
+	snake_tail += "o"; //increase tail size
 	return this -> fruit_eated;
 }
