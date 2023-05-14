@@ -34,6 +34,7 @@ void SnakeGame::drawScreen(void){
 void SnakeGame::placeFruit(void){
 	this -> fruit_coord.first = 1 + (rand() % (SnakeGame::width - 2)); //randomly generates x coordinate (1~38)
 	this -> fruit_coord.second = 1 + (rand() % (SnakeGame::height - 2)); //randomly generates y coordinate (1~18)
+	this -> fruit_eated = 0; //wait untill snake eat the fruit
 }
 
 /*
@@ -115,4 +116,16 @@ void SnakeGame::define_snake_head_char(void){
 	if (this -> snake_direction_moviment == 's') this -> snake_head_char = 'v';
 	if (this -> snake_direction_moviment == 'd') this -> snake_head_char = '>';
 	if (this -> snake_direction_moviment == 'a') this -> snake_head_char = '<';
+}
+
+/*
+	Function: 	eat_fruit
+	Objective:	Detect if head coordinates is equal to fruit coordinates, which implies that fruit has been eated.
+				In that case a new fruit must be placed somewhere else and snake´s tail must increase it´s size.			
+	Arguments:	none
+	Returns:	none
+*/
+bool SnakeGame::eat_fruit(void){
+	if (this -> snake_head == this -> fruit_coord) this -> fruit_eated = 1;
+	return this -> fruit_eated;
 }
