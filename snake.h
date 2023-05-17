@@ -12,6 +12,7 @@ private:
 	int const height = 20;
 	std::pair<int, int> fruit_coord;
 	std::pair<int, int> snake_head;
+	std::pair<int, int> * tail_coordinates;
 public:
 	SnakeGame() : 
 		snake_head(20, 10), game_over(0), snake_direction_moviment(' '), snake_head_char('>'), snake_tail(""), fruit_eated(1) {}; //default constructor to initialize data members in private area
@@ -21,7 +22,9 @@ public:
 	bool gameOver(void);
 	void move_snake(void);
 	void define_snake_head_char(void);
-	bool eat_fruit(void);
+	void eat_fruit(void);
+	std::pair<int, int> snake_head_current_position(void);
+	bool get_fruit_eated_status(void);
 };
 
 

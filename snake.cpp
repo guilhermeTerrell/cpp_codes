@@ -1,6 +1,5 @@
 #include <iostream>
 #include "snake.h"
-//#include <conio.h>
 
 /*
 	Function: 	screen
@@ -125,8 +124,30 @@ void SnakeGame::define_snake_head_char(void){
 	Arguments:	none
 	Returns:	none
 */
-bool SnakeGame::eat_fruit(void){
-	if (this -> snake_head == this -> fruit_coord) this -> fruit_eated = 1; //update eat flag
-	snake_tail += "o"; //increase tail size
+void SnakeGame::eat_fruit(void){
+	if (this -> snake_head == this -> fruit_coord){
+		this -> fruit_eated = 1; //update eat flag
+		snake_tail += 'o'; //increase tail size
+	}
+}
+
+/*
+	Function: 	snake_head_current_position
+	Objective:	Keep track of snake head position before move the snake. The body of the snake must follow it´s head	
+				by occuping it´s last position
+	Arguments:	none
+	Returns:	std::pair,<int, int> that represents head current position
+*/
+std::pair<int, int> SnakeGame::snake_head_current_position(void){
+	return this -> snake_head;
+}
+
+/*
+	Function: 	get_fruit_eated_status
+	Objective:	Return the flag that indicates that a fruit was eaten and a new one must be placed.			
+	Arguments:	none
+	Returns:	none
+*/
+bool SnakeGame::get_fruit_eated_status(void) {
 	return this -> fruit_eated;
 }
